@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    -webkit-font-smoothing: antialiased;
+}
+@font-face {
+    font-family: Comfortaa;
+    src: url(./assets/Comfortaa-VariableFont_wght.ttf);
+  }      
+
+.hoverwell:hover {
+    background-color: #485563;
+    cursor: pointer;
+  }  
+.container {
+    background-color : #55423d;
+    font-family: Comfortaa;
+    color: #fff3ec;
+}
+
+.topbar {
+    color: #fffffe;
+    vertical-align: middle;    
+}
+
+.button-class {
+    background-color: #ffc0ad;
+    color: #271c19;
+    border: 0;
+    border-radius: 3px;
+    font-weight: 700;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    cursor: pointer;
+    font-family: Comfortaa;
+}
