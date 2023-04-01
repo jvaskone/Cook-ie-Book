@@ -8,11 +8,13 @@ import { appRoutes}  from './routes';
 import { CalendarComponent } from './calendar/calendar.component';
 import { CreateRecipeComponent } from './recipes/create-recipe.component';
 import { RecipeListComponent } from './recipes/recipe-list.component';
+import { Error404Component } from './errors/Error404Component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
+    Error404Component,
     CalendarComponent,
     CreateRecipeComponent,
     RecipeListComponent
