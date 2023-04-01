@@ -9,6 +9,8 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { CreateRecipeComponent } from './recipes/create-recipe.component';
 import { RecipeListComponent } from './recipes/recipe-list.component';
 import { Error404Component } from './errors/Error404Component';
+import { RecipeThumbnailComponent } from './recipes/recipe-thumbnail.component';
+import { RecipeService } from './recipes/shared/recipe.service';
 
 @NgModule({
   declarations: [
@@ -17,13 +19,16 @@ import { Error404Component } from './errors/Error404Component';
     Error404Component,
     CalendarComponent,
     CreateRecipeComponent,
-    RecipeListComponent
+    RecipeListComponent,
+    RecipeThumbnailComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    RecipeService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,7 +8,8 @@
   }      
 
 .hoverwell:hover {
-    background-color: #485563;
+    background-color: #ffc0ad;   
+    color: #271c19; 
     cursor: pointer;
   }  
 .container {
