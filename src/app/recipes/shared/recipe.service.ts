@@ -19,6 +19,11 @@ export class RecipeService {
     getRecipe(id: number):IRecipe | undefined {
         return RECIPES.find(recipe => recipe.id === id);
     }
+
+    saveRecipe(recipe: IRecipe) {
+        recipe.id = 999;
+        RECIPES.push(recipe);
+    }
     
 }
 
