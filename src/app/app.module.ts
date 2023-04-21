@@ -12,6 +12,8 @@ import { Error404Component } from './errors/Error404Component';
 import { RecipeThumbnailComponent } from './recipes/recipe-thumbnail.component';
 import { RecipeService } from './recipes/shared/recipe.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RecipeDetailsComponent } from './recipes/recipe-details.component';
+import { RecipeResolver } from './recipes/recipe-resolver.service';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CalendarComponent,
     CreateRecipeComponent,
     RecipeListComponent,
+    RecipeDetailsComponent,
     RecipeThumbnailComponent
   ],
   imports: [
@@ -30,7 +33,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     RouterModule.forRoot(appRoutes)
   ],
   providers: [
-    RecipeService
+    RecipeService,
+    RecipeResolver
   ],
   bootstrap: [AppComponent]
 })

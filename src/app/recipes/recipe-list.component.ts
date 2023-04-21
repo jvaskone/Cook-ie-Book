@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IRecipe } from './shared/recipes.model';
 import { RecipeService } from './shared/recipe.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'recipe-list',
@@ -21,12 +22,13 @@ import { RecipeService } from './shared/recipe.service';
 })
 export class RecipeListComponent {
   recipes?: IRecipe[];
-  constructor(private recipeService : RecipeService) {
+  constructor(private recipeService : RecipeService, private route:ActivatedRoute) {
 
   }
 
   ngOnInit(): void {
     this.recipeService.getRecipes().subscribe(recipes => {this.recipes = recipes;});
+    //this.recipes = this.route.snapshot.data['recipes'];
   }
 
   handleThumbnailClicked(recipeName: any) {
