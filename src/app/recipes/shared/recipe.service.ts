@@ -87,7 +87,23 @@ késhegynyi kurkuma
         id: 3,
         name: "Fonott kalács",
         imageUrl: "assets/fonott_kalacs.jpg",
-        ingredients: ``,
-        instructions: ``
+        ingredients: 
+`50 dkg liszt
+0,5 kk só
+2,5 dkg friss élesztő
+2 dl tej
+2 ek cukor
+1 tasak vaníliás cukor
+1 egész tojás
+10 dkg vaj`,
+        instructions: 
+`Az élesztőt belemorzsoljuk a meleg, de nem forró tejbe és meghintjük 1 ek cukorral. Hagyjuk felfutni. Közben egy tálba szitáljuk a lisztet, beleszórjuk a sót, amit egy kevés liszttel betakarunk, hogy ne érintkezzen, majd közvetlenül az élesztővel. Hozzáadjuk a maradék cukrot, a vaníliás cukrot, a margarint és a tojások sárgáját. Alaposan kidagasztjuk.
+Meleg helyen, letakarva kb 1 óra alatt a duplájára kelesztjük.
+
+A megkelt tésztát 2 egyenlő nagyságú darabra vágjuk. Egy darabot 3 részre vágunk, ezekből hosszú, hüvelykujjnyi vastag rudakat sodrunk. A három rúd végeit összefogjuk, összecsípjük, majd hármas fonással, nem túl szorosan összefonjuk. A fonás végét is összecsípjük. Koszorúformára hajtjuk és szépen összeigazítjuk a végeket. A másik darab tésztával is elvégezzük a formázást.
+
+Sütőpapírral bélelt tepsibe emeljük és letakarva hagyjuk további 35 percet kelni. Előmelegítjük a sütőt. A megkelt tésztát vékonyan lekenjük egy tojás sárgája és egy kevés tej keverékével.
+
+180 fokon 25 perc alatt alul-felül sütéssel megsütjük. Rácson hagyjuk kihűlni.`
     },
 ];
