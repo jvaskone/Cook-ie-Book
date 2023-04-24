@@ -14,6 +14,7 @@ import { RecipeService } from './recipes/shared/recipe.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecipeDetailsComponent } from './recipes/recipe-details.component';
 import { RecipeResolver } from './recipes/recipe-resolver.service';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { RecipeResolver } from './recipes/recipe-resolver.service';
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule
   ],
   providers: [
     RecipeService,
