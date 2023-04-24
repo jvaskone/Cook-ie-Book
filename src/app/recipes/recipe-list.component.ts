@@ -6,8 +6,8 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'recipe-list',
   template: `
-    <div class="row">
-      <div *ngFor="let recipe of recipes" class="col-md-5">
+    <div class="container">
+      <div *ngFor="let recipe of recipes" class="row">
         <recipe-thumbnail  [recipe]="recipe"
         (click)="handleThumbnailClicked(recipe.name)" ></recipe-thumbnail>
         <hr>

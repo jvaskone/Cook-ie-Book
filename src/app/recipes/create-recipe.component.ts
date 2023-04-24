@@ -20,6 +20,10 @@ export class CreateRecipeComponent {
     return formControl==null || !(formControl.invalid && formControl.touched);
   }
 
+  getCategories() {
+    return this.recipeService.getCategories();
+  }
+
   saveRecipe(formValues:any) {
     // this.recipeService.saveRecipe(formValues).subscribe( () => {
     //   this.isDirty = false;

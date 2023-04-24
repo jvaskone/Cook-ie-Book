@@ -16,21 +16,37 @@ export class RecipeService {
         return subject;
     }
 
+    getCategories(): string[] {
+        return CATEGORIES;
+    }
+
     getRecipe(id: number):IRecipe | undefined {
         return RECIPES.find(recipe => recipe.id === id);
     }
 
     saveRecipe(recipe: IRecipe) {
         recipe.id = 999;
+        console.log(recipe);
         RECIPES.push(recipe);
     }
     
 }
 
+const CATEGORIES: string[] = [
+        "Leves",
+        "Főétel",
+        "Főzelék",
+        "Sütemény",
+        "Torta",
+        "Saláta",
+        "Befőzés"
+];
+
 const RECIPES: IRecipe[] = [
     {
         id: 1,
         name: "Húsleves",
+        category: "Leves",
         imageUrl: "assets/husleves.jpg",
         ingredients: 
 `csirkehús
@@ -61,6 +77,7 @@ késhegynyi kurkuma
     {
         id: 2,
         name: "Csirkepaprikás",
+        category: "Főétel",
         imageUrl: "assets/csirkepaprikas.jpg",
         ingredients: `
             1 kg csirkehús
@@ -86,6 +103,7 @@ késhegynyi kurkuma
     {
         id: 3,
         name: "Fonott kalács",
+        category: "Sütemény",
         imageUrl: "assets/fonott_kalacs.jpg",
         ingredients: 
 `50 dkg liszt

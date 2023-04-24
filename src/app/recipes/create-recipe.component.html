@@ -23,6 +23,13 @@
           />
         </div>
 
+        <div class="form-group">                  
+        <label for="recipeCategory">Kategória:</label><br>
+        <select (ngModel)="(newRecipe?.category)" class="form-control" name="category" required id="category">
+            <option *ngFor="let category of getCategories()">{{category}}</option>
+        </select>          
+        </div>
+
         <div
           class="form-group"
           [ngClass]="{ error: !isValid(newRecipeForm.controls['imageUrl']) }"
@@ -114,16 +121,20 @@
     </div>
 
     <div class="row">
-      <button
-        type="submit"
-        [disabled]="newRecipeForm.invalid"
-        class="btn btn-primary"
-      >
-        Save
-      </button>
-      <button type="button" class="btn btn-default" (click)="cancel()">
-        Cancel
-      </button>
+        <div class="col-md-4">
+            <button
+            type="submit"
+            [disabled]="newRecipeForm.invalid"
+            class="btn btn-primary"
+          >
+            Save
+          </button>    
+        </div>
+        <div class="col-md-4">
+            <button type="button" class="btn btn-default" (click)="cancel()">
+                Cancel
+              </button>        
+        </div>
     </div>
   </div>
 </form>
