@@ -8,7 +8,9 @@ import { IRecipe } from './shared/recipes.model';
   styles: [
     `
       .recipe-image {
-        height: 250px;
+        width: 100%;
+        max-width: 400px;
+        height: auto;
       }
       a {
         cursor: pointer;

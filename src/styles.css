@@ -2,6 +2,8 @@
 * {
     -webkit-font-smoothing: antialiased;
 }
+
+
 @font-face {
     font-family: Comfortaa;
     src: url(./assets/Comfortaa-VariableFont_wght.ttf);
@@ -23,6 +25,11 @@
     vertical-align: middle;    
 }
 
+
+input.ng-invalid.ng-touched {
+    border: red 2px solid;
+}
+
 .button-class {
     background-color: #ffc0ad;
     color: #271c19;
@@ -35,3 +42,20 @@
     cursor: pointer;
     font-family: Comfortaa;
 }
+
+.btn-primary:disabled,
+.btn-primary[disabled]{  
+  background-color: #ffc0ad;
+  color: #666666;
+}
+
+
+.btn-primary{  
+  background-color: #ffc0ad;
+  color: #fffffe;
+}
+
+.btn-primary:hover{  
+    background-color: #55423d;
+    color: #ffc0ad;
+  }

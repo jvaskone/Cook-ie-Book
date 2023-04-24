@@ -6,7 +6,16 @@ import { AbstractControl } from '@angular/forms';
 
 @Component({
   selector: 'create-recipe',
-  templateUrl:  "create-recipe.component.html"
+  templateUrl:  "create-recipe.component.html",
+  styles: [
+  `
+  .form-control:focus {
+    border-color: #e78fb3;
+    border-width: 2px;
+    outline: 0;  
+    box-shadow: 0 0 0;
+  }`  
+  ]
 })
 export class CreateRecipeComponent {
   newRecipe ?: IRecipe;
