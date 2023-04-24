@@ -11,11 +11,14 @@ import { IRecipe } from './shared/recipes.model';
         padding-left: 20px;
         padding-right: 20px;
       }
-      .event-image {
-        height: 100px;
+      .recipe-image {
+        height: 250px;
       }
       a {
         cursor: pointer;
+      }
+      .text-style {
+        white-space: pre-wrap
       }
     `,
   ],

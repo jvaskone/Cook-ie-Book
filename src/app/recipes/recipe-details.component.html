@@ -1,27 +1,31 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-6" style="float: left">
-      <h2>{{ recipe?.name }}</h2>
 
-      <div class="col-md-6">
-        <img
-          [src]="recipe?.imageUrl"
-          [alt]="recipe?.name"
-          class="recipe-image"
-          height="250px"
-        />
-      </div>
+    <!--https://mdbootstrap.com/docs/angular/layout/grid/ -->
 
-      <div style="width: 300px">
-        <strong>Hozzávalók:</strong><br />
-        {{ recipe?.ingredients }}
-      </div>
+    <div class="col-md-4">
+
+        <h2>{{ recipe?.name }}</h2>
+        
+          <img
+            [src]="recipe?.imageUrl"
+            [alt]="recipe?.name"
+            class="recipe-image"            
+          />        
+      
     </div>
+
+    <div class="col-md-8">
+        <h3>Hozzávalók:</h3>
+        <p class="text-style">{{ recipe?.ingredients }}</p>
+    </div>
+    
   </div>
 
   <div class="row">
-    <div class="col-md-11">
-      <div><strong>Elkészítés:</strong> {{ recipe?.instructions }}</div>
+    <div class="col-md-12">
+      <h3>Elkészítés:</h3>
+      <p class="text-style"> {{ recipe?.instructions }}</p>
     </div>
   </div>
 </div>

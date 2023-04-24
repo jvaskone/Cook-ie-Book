@@ -32,8 +32,31 @@ const RECIPES: IRecipe[] = [
         id: 1,
         name: "Húsleves",
         imageUrl: "assets/husleves.jpg",
-        ingredients: ``,
-        instructions: ``
+        ingredients: 
+`csirkehús
+1 közepes fej vöröshagyma
+3 gerezd fokhagyma
+3-4 szál zellerzöld
+1 csokor petrezselyem
+5 nagyobb sárgarépa
+5 kisebb fehérrépa
+½ zellergumó
+½ karalábé
+¼ káposzta
+2 teáskanál egész feketebors
+1 teáskanál darált kömény
+késhegynyi kurkuma
+`,
+        instructions: 
+`1. Egy nagy fazékba beletesszük a húsokat. Felöntjük annyi hideg vízzel, hogy bőven ellepje.
+2. Egészben beletesszük a vöröshagymát és a fokhagyma gerezdeket, valamint a sót, borsot, zellerzöldet, petrezselymet.
+3. Közepes lángon főzzük, mikor hab jelenik meg a tetején, azt egy szűrővel leszedjük róla.
+4. Miután lehaboztuk, alacsony lángon főzzük tovább, hogy a leves ne felforrjon, hanem csak gyöngyözzön, ettől lesz szép tiszta. A sárgarépát, a fehérrépát, a káposztát egyben beletesszük a levesbe. Menjen bele a zellergumó is vastagabb cikkekre darabolva.
+   A húslevest ne kevergessük, csak hagyjuk magában főni. Viszont gyakran kóstoljuk meg, hogy kíván-e még sót.
+   A húsleves elkészültét ne siettessük, a titok a lassú főlésben rejlik. A hozzávalókból ugyanis így tudjuk kinyerni a legtöbb ízt.
+5. Nézzük meg, hogy a zöldségek puhára főttek-e. Ha igen, zárjuk le a lángot és hagyjuk pihenni kb. 10 percig a levest, hogy a benne úszkáló zöldség- és húsdarabok leülepedjenek az aljára.
+   Ezután szűrjük át egy másik edénybe, a húst és a zöldségeket pedig kiszedhetjük belőle külön tányérokra, hogy a leves mellé tálalni tudjuk. Fontos, hogy ügyeljünk arra, hogy a leves ilyenkor se keveredjen fel.
+6. A húsleves tiszta levét zöldségek, húsdarabok és tészta nélkül le is fagyaszthatjuk, hogy aztán később alapléként leveskocka helyett használjuk fel más ételek elkészítéséhez.`
     },
     {
         id: 2,
