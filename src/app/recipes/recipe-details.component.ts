@@ -7,10 +7,6 @@ import { IRecipe } from './shared/recipes.model';
   templateUrl: 'recipe-details.component.html',
   styles: [
     `
-      .container {
-        padding-left: 20px;
-        padding-right: 20px;
-      }
       .recipe-image {
         height: 250px;
       }
