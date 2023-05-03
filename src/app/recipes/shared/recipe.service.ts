@@ -1,33 +1,41 @@
 import { Injectable } from "@angular/core";
 import { IRecipe } from "./recipes.model";
-import { Observable, Subject } from "rxjs";
+import { Observable, Subject, catchError, of } from "rxjs";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable()
 export class RecipeService {
 
+    constructor(private http: HttpClient) {
+
+    }
+
     getRecipes(): Observable<IRecipe[]> {
-        let subject = new Subject<IRecipe[]>();
-        setTimeout(() => {
-            subject.next(RECIPES);
-            subject.complete();
-          }, 100);
-          return subject;
-    
-        return subject;
+        return this.http.get<IRecipe[]>('/api/recipes')
+            .pipe(catchError(this.handleError<IRecipe[]>('getRecipes', [])));
     }
 
     getCategories(): string[] {
         return CATEGORIES;
     }
 
-    getRecipe(id: number):IRecipe | undefined {
-        return RECIPES.find(recipe => recipe.id === id);
+    getRecipe(id: number):Observable<IRecipe> {
+        return this.http.get<IRecipe>('/api/recipes/' + id)
+        .pipe(catchError(this.handleError<IRecipe>('getRecipe')));
+
     }
 
     saveRecipe(recipe: IRecipe) {
         recipe.id = 999;
         console.log(recipe);
         RECIPES.push(recipe);
+    }
+
+    private handleError<T> (operation = 'operation', result? : T) {
+        return (error: any): Observable<T> => {
+            console.error(error);
+            return of (result as T);
+        }
     }
     
 }

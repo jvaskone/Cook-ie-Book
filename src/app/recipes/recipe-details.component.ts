@@ -33,22 +33,20 @@ export class RecipeDetailsComponent implements OnInit {
 
   /*ngOnInit() {
     this.route.data.forEach((data) => {
-      this.recipe = data['recipe'];
+      this.recipe = this.route.snapshot.data['recipe'];
     });
   }*/
 
 
-  ngOnInit() {
-    /*
+  ngOnInit() {    
     this.route.params.forEach((params: Params) =>{
-      this.recipeService.getRecipe(+params['id'])?.subscribe((recipe:IRecipe) => {
-        this.recipe = recipe;
-      });
-    })*/
+      //this should work if we used the recipe resolver
+      //this.recipe = this.route.snapshot.data['recipe'];
+       this.recipeService.getRecipe(+params['id'])?.subscribe((recipe:IRecipe) => {
+         this.recipe = recipe;
+       });
+    })
 
-     this.recipe = this.recipeService.getRecipe(
-       +this.route.snapshot.params['id']
-     );
   }
 
 }
