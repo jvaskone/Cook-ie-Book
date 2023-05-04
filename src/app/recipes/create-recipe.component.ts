@@ -38,9 +38,6 @@ export class CreateRecipeComponent {
       this.isDirty = false;
       this.router.navigate(['/recipes']);
     });
-    // this.recipeService.saveRecipe(formValues);
-    // this.isDirty = false;
-    // this.router.navigate(['/recipes']);
   }
 
   cancel() {

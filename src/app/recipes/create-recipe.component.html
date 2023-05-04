@@ -25,8 +25,8 @@
 
         <div class="form-group">                  
         <label for="recipeCategory">Kategória:</label><br>
-        <select (ngModel)="(newRecipe?.category)" class="form-control" name="category" required id="category">
-            <option *ngFor="let category of getCategories()">{{category}}</option>
+        <select (ngModel)="(newRecipe?.categoryId)" class="form-control" name="categoryId" required id="categoryId">
+            <option *ngFor="let category of getCategories()" [value]="category.id" >{{category.name}}</option>
         </select>          
         </div>
 

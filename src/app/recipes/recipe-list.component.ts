@@ -8,8 +8,8 @@ import { ActivatedRoute } from '@angular/router';
   template: `
     <div class="container">
       <div *ngFor="let recipe of recipes" class="row">
-        <recipe-thumbnail  [recipe]="recipe"
-        (click)="handleThumbnailClicked(recipe.name)" ></recipe-thumbnail>
+        <recipe-thumbnail  [recipe]="recipe" [category]="getCategory(recipe.categoryId)"
+        (eventClick)="handleThumbnailClicked(recipe.categoryId)" ></recipe-thumbnail>
         <hr>
       </div>
   </div>
@@ -31,8 +31,12 @@ export class RecipeListComponent {
     //this.recipes = this.route.snapshot.data['recipes'];
   }
 
+  getCategory(i: number) {    
+    return this.recipeService.getCategory(i)?.name;
+  }
+
   handleThumbnailClicked(recipeName: any) {
-    console.log(recipeName);
+    //console.log(recipeName);
   }
 }
 

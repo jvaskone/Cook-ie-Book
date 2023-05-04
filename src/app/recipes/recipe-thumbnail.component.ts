@@ -6,12 +6,12 @@ import { IRecipe } from "./shared/recipes.model";
   template: `
   <!-- [routerLink]="['/events', event.id]" routerLinkActive="router-link-active" -->
   <div
-      class="hoverwell thumbnail">
+      class="hoverwell thumbnail" (click)="handleClickMe()">
       <ul [routerLink]="['/recipes', recipe?.id]" routerLinkActive="router-link-active">
         <li><img [src]="recipe?.imageUrl" [alt]="recipe?.name" class="recipe-image"></li>
         <ul style="margin: auto; padding: 10px; float:left;">
         <li class="header">{{recipe?.name}}</li>
-        <li class="text">{{recipe?.category}}</li>
+        <li class="text">{{category}}</li>
         </ul>
       </ul>
   </div>
@@ -41,6 +41,7 @@ import { IRecipe } from "./shared/recipes.model";
 })
 export class RecipeThumbnailComponent {
   @Input() recipe ?: IRecipe;
+  @Input() category ?: any;
   @Output() eventClick = new EventEmitter();
   handleClickMe() {
     this.eventClick.emit(this.recipe?.name);
