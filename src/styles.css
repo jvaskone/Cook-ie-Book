@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 * {
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;    
 }
 
 
@@ -14,10 +14,16 @@
     color: #271c19; 
     cursor: pointer;
   }  
-.container {
+.container-fluid {
     background-color : #55423d;
     font-family: Comfortaa;
     color: #fff3ec;
+}
+
+.container {
+  background-color : #55423d;
+  font-family: Comfortaa;
+  color: #fff3ec;
 }
 
 .topbar {

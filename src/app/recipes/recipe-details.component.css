@@ -1,0 +1,17 @@
+.recipe-image {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+  }
+  a {
+    cursor: pointer;
+  }
+  .text-style {
+    white-space: pre-wrap
+  }
+
+  .container {
+    background-color: #55423d;
+    height: 100vh;
+  }
+

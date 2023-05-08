@@ -5,21 +5,7 @@ import { IRecipe } from './shared/recipes.model';
 
 @Component({
   templateUrl: 'recipe-details.component.html',
-  styles: [
-    `
-      .recipe-image {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-      }
-      a {
-        cursor: pointer;
-      }
-      .text-style {
-        white-space: pre-wrap
-      }
-    `,
-  ],
+  styleUrls: ['recipe-details.component.css'],
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe?: IRecipe;

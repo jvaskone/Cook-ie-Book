@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'recipe-list',
   template: `
-    <div class="container">
+    <div class="container-fluid">
       <div *ngFor="let recipe of recipes" class="row">
         <recipe-thumbnail  [recipe]="recipe" [category]="getCategory(recipe.categoryId)"
         (eventClick)="handleThumbnailClicked(recipe.categoryId)" ></recipe-thumbnail>

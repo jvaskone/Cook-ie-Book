@@ -1,5 +1,10 @@
 .navbar {
     background-color: #b08679;
+    padding: 1px;
+}
+
+.navbar-brand {
+    margin: 5px;
 }
 
 li a:hover {
