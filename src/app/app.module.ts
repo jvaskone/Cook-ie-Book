@@ -19,8 +19,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
-    AppComponent,
     NavbarComponent,
+    AppComponent,    
     Error404Component,
     CalendarComponent,
     CreateRecipeComponent,

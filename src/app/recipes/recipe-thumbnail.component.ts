@@ -4,7 +4,6 @@ import { IRecipe } from "./shared/recipes.model";
 @Component({
   selector: 'recipe-thumbnail',
   template: `
-  <!-- [routerLink]="['/events', event.id]" routerLinkActive="router-link-active" -->
   <div
       class="hoverwell thumbnail" (click)="handleClickMe()">
       <ul [routerLink]="['/recipes', recipe?.id]" routerLinkActive="router-link-active">

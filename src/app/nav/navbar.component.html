@@ -1,7 +1,23 @@
-<div class="navbar navbar-default">
-  <ul>
-    <li><a [routerLink]="['/recipes']" routerLinkActive="active" >Főoldal</a></li>
-    <li><a [routerLink]="['/new-recipe']" routerLinkActive="active" >Új recept</a></li>
-  </ul>
-</div>  
-  
+<nav class="navbar navbar-expand-md navbar-light">
+  <a class="navbar-brand" href="#">
+    <img src="assets/cookie.ico" width="30" height="30" alt="Cook-e-book">
+  </a>
+  <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed" data-bs-toggle="collapse"  data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+    <div class="collapse navbar-collapse" [ngbCollapse]="isCollapsed">
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link active" [routerLink]="['/recipes']" routerLinkActive="active" >Receptek</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/new-recipe']" routerLinkActive="active" >Új recept</a>    
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control mr-sm-2" type="search" placeholder="Keresés">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Keresés</button>
+      </form>
+      </div>
+</nav>    

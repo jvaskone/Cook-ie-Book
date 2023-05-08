@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
     searchTerm : string = "";
+    isCollapsed : boolean = true;
 //    foundRecipess : IRecipe[] = [];
   
     searchRecipe(searchTerm:string) {

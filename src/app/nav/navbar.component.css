@@ -1,52 +1,14 @@
 .navbar {
-    position: relative;
-    min-height: 40px;
-    margin-bottom: 21px;
-    border: 1px solid transparent;
-    font-weight: 700;
-    font-size: 1rem;
-}
-
-ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-li {
-    float: left;
-  }
-  
-li a {
-    display: block;
-    color: #271c19;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    cursor: pointer;
+    background-color: #b08679;
 }
 
 li a:hover {
-    background-color: #fff3ec;
+     background-color: #fee2d1;
+    color: #271c19;
 }
 
-li a.active {
-    background-color: #55423d;
-    color: #fffffe;
+.form-inline {    
+    float: none;
+    right: 0;
 }
 
-li a:hover:not(.active) {
-    background-color: #fff3ec;
-}
-
-
-
-.navbar-default {
-    background-color: #ffc0ad;
-    border-color: transparent
-}
-
-
-
-.nav.navbar-nav {font-size: 15px;background-color: #ffc0ad}
