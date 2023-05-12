@@ -2,6 +2,7 @@ export interface IRecipe {
   id: number;
   name: string;
   imageUrl: string;
+  image: any;
   category: IRecipeCategory;
   categoryId: number;
   temperature?: number;

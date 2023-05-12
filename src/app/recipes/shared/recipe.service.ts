@@ -22,7 +22,7 @@ export class RecipeService {
 
     }
 
-    saveRecipe(recipe: IRecipe) {
+    saveRecipe(recipe: IRecipe) {        
         let options = { headers: new HttpHeaders({'Content-type': 'application/json'})}
         return this.http.post<IRecipe>('/api/recipes/recipe', recipe, options)
             .pipe(catchError(this.handleError<IRecipe>('saveRecipe')));

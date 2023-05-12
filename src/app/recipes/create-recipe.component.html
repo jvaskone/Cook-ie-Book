@@ -30,50 +30,17 @@
         </select>          
         </div>
 
-        <div
-          class="form-group"
-          [ngClass]="{ error: !isValid(newRecipeForm.controls['imageUrl']) }"
-        >
-          <label for="imageUrl">Kép:</label>
-          <em
-            *ngIf="
-              !isValid(newRecipeForm.controls['imageUrl']) &&
-              newRecipeForm.controls['imageUrl'].hasError('required')
-            "
-            >*</em
-          >
-          <em
-            *ngIf="
-              !isValid(newRecipeForm.controls['imageUrl']) &&
-              newRecipeForm.controls['imageUrl'].hasError('pattern')
-            "
-            >png/jpg</em
-          ><br />
-          <input
-            (ngModel)="(newRecipe?.imageUrl)"
-            name="imageUrl"
-            required
-            pattern=".*\/.*.(png|jpg)"
-            id="imageUrl"
-            type="text"
-            class="form-control"
-            placeholder="url..."
-          />
-          <img
-            [attr.src]="newRecipeForm.controls['imageUrl'].value"
-            *ngIf="newRecipeForm.controls['imageUrl']?.valid"
-            width="200"
-          />
+        <div>
+          <label for="imageUrl">Kép:</label><br>
+          <input type='file' accept="image/*" (change)="addFile($event)" (ngModel)="(newRecipe?.imageUrl)" required name="imageUrl" id="imageUrl">
+          <br/>        
+          <img [src]="imageData" height="150" (ngModel)="(newRecipe?.image)" id="image"/>                
         </div>
+
       </div>
 
-      <!--
-            <div>
-                <label for="imageUrl">Kép:</label><br>
-                <input type='file' accept="image/*" (change)="addFile($event)" (ngModel)="newRecipe?.imageUrl" name="imageUrl" id="imageUrl">        
-                <img [src]="image" width="275">
-            </div>
-    -->
+      
+    
       <div class="col-6">
         <div
           class="form-group"

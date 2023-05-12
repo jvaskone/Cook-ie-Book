@@ -17,7 +17,7 @@ import { AbstractControl } from '@angular/forms';
 export class CreateRecipeComponent {
   newRecipe ?: IRecipe;
   isDirty : boolean = true;
-  image ?: any;
+  imageData ?: any;
   constructor(private router:Router, private recipeService:RecipeService) {
 
   }
@@ -31,26 +31,29 @@ export class CreateRecipeComponent {
   }
 
   saveRecipe(formValues:any) {
+    this.addImageDataToRecipe(formValues);
     this.recipeService.saveRecipe(formValues).subscribe( () => {
-      this.isDirty = false;
-      this.router.navigate(['/recipes']);
+     this.isDirty = false;
+     this.router.navigate(['/recipes']);
     });
+  }
+
+  private addImageDataToRecipe(formValues:any) {
+    formValues.image = this.imageData;
   }
 
   cancel() {
     this.router.navigate(['/recipes']);
   }
 
-  addFile(event: any) {    
+  addFile(event: any) {
     if (event.target.files && event.target.files[0]) {
         var reader = new FileReader();
         reader.onload = (event: any) => {
-            this.image = event.target.result;
-            //console.log(this.url);
+          this.imageData = event.target.result;
         }
-        reader.readAsDataURL(event.target.files[0]);
-        //this.newRecipe.imageUrl = event.target.files[0];
-    }
+        reader.readAsDataURL(event.target.files[0]);        
+      }
 }
 }
 
