@@ -9,11 +9,8 @@ import { AbstractControl } from '@angular/forms';
   templateUrl:  "create-recipe.component.html",
   styles: [
   `
-  .form-control:focus {
-    border-color: #e78fb3;
-    border-width: 2px;
-    outline: 0;  
-    box-shadow: 0 0 0;
+  .row {     
+     padding: 10px; 
   }`  
   ]
 })
