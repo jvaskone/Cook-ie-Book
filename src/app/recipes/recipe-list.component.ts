@@ -16,7 +16,9 @@ import { ActivatedRoute } from '@angular/router';
   ` ,
   styles: [`
     hr {      
-      border-color: #271c19;
+      border-color: #fff3ec;
+      background-color: ##fff3ec;
+      margin-bottom: 0px;      
     }
   `]
 })

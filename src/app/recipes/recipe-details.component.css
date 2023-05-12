@@ -3,15 +3,23 @@
     max-width: 400px;
     height: auto;
   }
-  a {
-    cursor: pointer;
+  p {
+    cursor: text;
+    /* background-color: #b08679;
+    color: #271c19; */
+  }
+  h4 {
+    cursor: default;
   }
   .text-style {
     white-space: pre-wrap
   }
+  .row {
+    padding: 10px;    
+  }
 
   .container {
     background-color: #55423d;
-    height: 100vh;
+    
   }
 
