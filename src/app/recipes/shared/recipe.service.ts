@@ -6,12 +6,17 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 @Injectable()
 export class RecipeService {
     categories?: IRecipeCategory[];
+    private recipesUrl = '/api/recipes';
 
     constructor(private http: HttpClient) {
         this.initCategories();
     }
-
-    getRecipes(): Observable<IRecipe[]> {
+    
+    getRecipes(searchTerm?: string): Observable<IRecipe[]> {
+        if(searchTerm!=null) {
+            return this.http.get<IRecipe[]>('/api/recipes?searchQuery='+searchTerm)
+            .pipe(catchError(this.handleError<IRecipe[]>('getRecipes', [])));
+        }
         return this.http.get<IRecipe[]>('/api/recipes')
             .pipe(catchError(this.handleError<IRecipe[]>('getRecipes', [])));
     }
@@ -27,6 +32,13 @@ export class RecipeService {
         return this.http.post<IRecipe>('/api/recipes/recipe', recipe, options)
             .pipe(catchError(this.handleError<IRecipe>('saveRecipe')));
     }
+
+    deleteRecipe(id: number): Observable<{}> {
+        let options = { headers: new HttpHeaders({'Content-type': 'application/json'})}
+        const url = `${this.recipesUrl}/${id}`;
+        return this.http.delete<IRecipe>(url, options)
+          .pipe(catchError(this.handleError<IRecipe>('deleteRecipe')));
+      }    
 
     getCategories(): IRecipeCategory[] | undefined {
         return this.categories;

@@ -7,10 +7,10 @@ import { RecipeDetailsComponent } from "./recipes/recipe-details.component"
 import { RecipeResolver } from "./recipes/recipe-resolver.service"
 
 export const appRoutes:Routes = [
-  { path: 'new-recipe', component:CreateRecipeComponent},
+  { path: 'recipes/0/edit', component:CreateRecipeComponent},
   { path: 'recipes', component:RecipeListComponent },
-//  { path: 'recipes/:id' , component: RecipeDetailsComponent, resolve: {recipe:[RecipeResolver]}},
   { path: 'recipes/:id' , component: RecipeDetailsComponent},
+  { path: 'recipes/:id/edit' , component: Error404Component},
   { path: 'calendar', component:CalendarComponent },
   { path: '404', component:Error404Component },
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},

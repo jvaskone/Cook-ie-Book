@@ -12,12 +12,13 @@
           <a class="nav-link active" [routerLink]="['/recipes']" routerLinkActive="active" >Receptek</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/new-recipe']" routerLinkActive="active" >Új recept</a>    
+          <a class="nav-link" [routerLink]="['/recipes/0/edit']" routerLinkActive="active" >Új recept</a>    
         </li>
       </ul>
       <form class="d-flex">
-        <input class="form-control mr-sm-2" type="search" placeholder="Keresés">
-        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Keresés</button>
+        <input class="form-control mr-sm-2" type="search" [(ngModel)]="searchTerm" name="searchTerm" placeholder="Keresés">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit" 
+          [routerLink]="['/recipes']" [queryParams]="{searchQuery:searchTerm}" routerLinkActive="active">Keresés</button>
       </form>
       </div>
 </nav>    

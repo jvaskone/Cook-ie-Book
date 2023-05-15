@@ -11,6 +11,7 @@ export class RecipeDetailsComponent implements OnInit {
   recipe?: IRecipe;
   filterBy: string = 'all';
   sortBy: string = 'name';
+  editing:boolean=false;
 
   constructor(
     private recipeService: RecipeService,
@@ -33,6 +34,18 @@ export class RecipeDetailsComponent implements OnInit {
        });
     })
 
+  }
+
+  getCategory(recipe: IRecipe | undefined) {
+    if (recipe == null) {
+      return "";
+    }
+    return this.recipeService.getCategory(recipe.categoryId)?.name;
+  }
+
+  doSubmit() {
+    this.editing = false;
+      console.log("submit");
   }
 
 }
