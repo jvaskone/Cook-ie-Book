@@ -26,21 +26,22 @@ export class RecipeListComponent {
   _searchTerm = '';
 
   constructor(private recipeService : RecipeService, private route:ActivatedRoute) {
+    this.route.queryParamMap.subscribe((params: any) => {
+        this.searchTerm = this.route.snapshot.queryParamMap.get('searchQuery') || '';
+   });
 
   }
 
   ngOnInit(): void {
-    console.log("INIT LIST");
-    this.recipeService.getRecipes().subscribe(recipes => {this.recipes = recipes;});
-    //this.recipes = this.route.snapshot.data['recipes'];
-    this._searchTerm = this.route.snapshot.queryParamMap.get('searchQuery') || '';
+    //this.searchTerm = this.route.snapshot.queryParamMap.get('searchQuery') || '';
+    this.recipeService.getRecipes(this._searchTerm).subscribe(recipes => {this.recipes = recipes;});
   }
 
   get searchTerm():string {
     return this._searchTerm;
   }
 
-  set listFilter(value: string) {
+  set searchTerm(value: string) {
     this._searchTerm = value;
     this.recipeService.getRecipes(this.searchTerm).subscribe(recipes => {this.recipes = recipes;});
   }
