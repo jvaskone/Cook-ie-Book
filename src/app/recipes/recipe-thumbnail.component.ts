@@ -12,10 +12,10 @@ import { Router } from "@angular/router";
         <li><img [src]="recipe?.image" [alt]="recipe?.name" class="recipe-image" [attr.data-color]="recipe?.categoryId"></li>
         <ul style="margin: auto; padding: 10px; float:left;">
         <li class="header">{{recipe?.name}}</li>
-        <li class="category">{{category}}</li>
+        <li class="category" [attr.data-color]="recipe?.categoryId">{{category}}</li>
         </ul>
         <li style="margin-top: 10px; padding: 10px; float:right" (click)="deleteRecipe()" ><i class="fa fa-trash"></i></li>
-        <li style="margin-top: 10px; padding: 10px; float:right"><i class="fa fa-pencil" [routerLink]="['/recipes', recipe?.id, 'edit']" routerLinkActive="router-link-active"></i></li>
+        <li style="margin-top: 10px; padding: 10px; float:right" (click)="editRecipe()" ><i class="fa fa-pencil" [routerLink]="['/recipes', recipe?.id, 'edit']" routerLinkActive="router-link-active"></i></li>
       </ul>
   </div>
   `,
@@ -35,6 +35,10 @@ export class RecipeThumbnailComponent {
     this.eventClick.emit(this.recipe?.name);
   }
 
+  editRecipe(): void {
+    this.router.navigate(['/recipes/'+this.recipe?.id+'/edit']);
+  }
+
   deleteRecipe(): void {
     if (this.recipe == null) {
       //       
@@ -46,15 +50,8 @@ export class RecipeThumbnailComponent {
          });
       }
     }
+    this.router.navigate(['/recipes']);
   }
 
-  onSaveComplete(message?: string): void {
-    // if (message) {
-    //   this.messageService.addMessage(message);
-    // }
-    // this.reset();
 
-    // Navigate back to the recipe list
-    this.router.navigate(['/recipes']);
-  }  
 }

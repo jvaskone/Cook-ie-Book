@@ -22,16 +22,33 @@
   } 
 [data-color="1"] {    
     border-color: lightgrey;
+    color: lightgrey;
 }
 [data-color="2"] {
-    border-color: lightgreen;
+    border-color: lightseagreen;
+    color: lightseagreen;
 }
 [data-color="3"] {
-    border-color: rgb(163, 112, 212);
+    border-color: rgb(29, 188, 29);;
+    color: rgb(29, 188, 29);
 }
 [data-color="4"] {
-    border-color: lightskyblue;
+    border-color: yellow;
+    color: yellow;
 }
 [data-color="5"] {
-    border-color: blueviolet;
+    border-color: rgb(167, 79, 167);
+    color: rgb(167, 79, 167);
+}
+[data-color="6"] {
+    border-color: lightseagreen;
+    color: lightseagreen;
+}
+[data-color="7"] {
+  border-color: white;
+  color: white;
+}
+[data-color="8"] {
+  border-color: palevioletred;
+  color: palevioletred;
 }
