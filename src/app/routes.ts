@@ -11,7 +11,7 @@ export const appRoutes:Routes = [
   { path: 'recipes/0/edit', component:CreateRecipeComponent},
   { path: 'recipes', component:RecipeListComponent },
   { path: 'recipes/:id' , component: RecipeDetailsComponent, resolve: { recipe: RecipeResolver}},
-//  { path: 'recipes/:id/edit' , component: RecipeEditComponent /** , resolve: { recipe: RecipeResolver}*/},
+  { path: 'recipes/:id/edit' , component: CreateRecipeComponent /** , resolve: { recipe: RecipeResolver}*/},
   { path: 'calendar', component:CalendarComponent },
   { path: '404', component:Error404Component },
   { path: '', redirectTo: '/recipes', pathMatch: 'full'},
