@@ -43,7 +43,13 @@ export class CreateRecipeComponent {
   }
 
   cancel() {
-    this.router.navigate(['/recipes']);
+    if (this.isDirty) {
+      if (confirm(`Biztosan elhagyod az oldalt mentés nélkül?`)) {
+        this.router.navigate(['/recipes']);
+      }
+    } else {
+      this.router.navigate(['/recipes']);
+    }
   }
 
   addFile(event: any) {
