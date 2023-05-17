@@ -15,3 +15,8 @@ export interface IRecipeCategory {
   id: number;
   name: string;
 }
+
+export interface RecipeResolved {
+  recipe?: IRecipe | null;
+  error?: any;
+}

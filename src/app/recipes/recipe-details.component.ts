@@ -12,6 +12,7 @@ export class RecipeDetailsComponent implements OnInit {
   filterBy: string = 'all';
   sortBy: string = 'name';
   editing:boolean=false;
+  errorMessage: string = '';
 
   constructor(
     private recipeService: RecipeService,
@@ -27,11 +28,12 @@ export class RecipeDetailsComponent implements OnInit {
 
   ngOnInit() {    
     this.route.params.forEach((params: Params) =>{
-      //this should work if we used the recipe resolver
-      //this.recipe = this.route.snapshot.data['recipe'];
-       this.recipeService.getRecipe(+params['id'])?.subscribe((recipe:IRecipe) => {
-         this.recipe = recipe;
-       });
+      const resolvedRecipe = this.route.snapshot.data['recipe'];
+      this.errorMessage = resolvedRecipe.error;
+      this.recipe = resolvedRecipe.recipe;
+      //  this.recipeService.getRecipe(+params['id'])?.subscribe((recipe:IRecipe) => {
+      //    this.recipe = recipe;
+      //  });
     })
 
   }
