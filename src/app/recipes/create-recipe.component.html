@@ -3,8 +3,8 @@
   (ngSubmit)="saveRecipe(newRecipeForm.value)"
   autocomplete="on"
 >
-  <div class="container">
-    <div class="row">
+  <div class="card">
+    <div class="form-group row mb-2">
       <div class="col-6">
         <div class="form-group">
           <label for="recipeName">Étel neve:</label>
@@ -49,29 +49,7 @@
           </select>
         </div>
 
-        <div>
-          <label for="imageUrl">Kép:</label><br />
-          <input
-            type="file"
-            accept="image/*"
-            (change)="addFile($event)"
-            [(ngModel)]="newRecipe.imageUrl"
-            name="imageUrl"
-            id="imageUrl"
-            required
-          />
-          <br />
-          <img
-            [src]="imageData"
-            height="150"
-            (ngModel)="(newRecipe.image)"            
-            id="image"
-          />
-        </div>
-      </div>
-
-      <div class="col-6">
-        <div class="form-group">
+        <div class="form-group">          
           <label for="recipeIngredients">Hozzávalók:</label>
           <!-- <em *ngIf="!isValid(newRecipeForm.controls['ingredients'])">*</em> -->
           <br />
@@ -90,6 +68,34 @@
           ></textarea>
         </div>
       </div>
+
+      <div class="col-6">
+
+        <div class="form-group">
+          <label for="imageUrl">Kép:</label><br />
+          <input
+            type="file"
+            accept="image/*"
+            (change)="addFile($event)"
+            [(ngModel)]="newRecipe.imageUrl"
+            name="imageUrl"
+            id="imageUrl"                            
+          />
+          <br />
+          <img
+            [src]="imageData"
+            height="150"
+            required
+            [(ngModel)]="newRecipe.image"            
+            id="recipeImage"
+            #imageVar = "ngModel"
+            name="recipeImage"
+            [ngClass]="{ 'is-invalid': imageVar.valid}"        
+          />
+        </div>
+      </div>        
+
+      
     </div>
     <div class="row">
       <div class="col-md-12">
@@ -107,7 +113,7 @@
             rows="16"
             cols="80"
             [value]="editedRecipe?.instructions"
-            #instructionsVar = "ngModel"
+            #instructionsVar = "ngModel"            
             [ngClass]="{ 'is-invalid': instructionsVar.touched && !instructionsVar.valid }"
 
           ></textarea>
@@ -116,7 +122,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-4">
+      <div class="col-md-2">
         <button
           type="submit"
           [disabled]="newRecipeForm.invalid"
@@ -125,7 +131,7 @@
           Mentés
         </button>
       </div>
-      <div class="col-md-4">
+      <div class="col-md-2">
         <button type="button" class="btn btn-default" (click)="cancel()">
           Mégsem
         </button>
@@ -133,3 +139,5 @@
     </div>
   </div>
 </form>
+<!-- <br>Valid: {{newRecipeForm.valid}}
+<br>Image Value: {{newRecipeForm.value | json}} -->

@@ -51,6 +51,7 @@ export class CreateRecipeComponent implements OnInit {
               this.newRecipe.name = this.editedRecipe.name;
               this.newRecipe.categoryId = this.editedRecipe.categoryId;
               this.newRecipe.ingredients = this.editedRecipe.ingredients;
+              this.newRecipe.instructions = this.editedRecipe.instructions;
               this.newRecipe.imageUrl = this.editedRecipe.imageUrl;
               this.newRecipe.image = this.editedRecipe.image;
               this.newRecipe.category = this.editedRecipe.category;
