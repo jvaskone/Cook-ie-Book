@@ -33,6 +33,13 @@ export class RecipeService {
             .pipe(catchError(this.handleError<IRecipe>('saveRecipe')));
     }
 
+    updateRecipe(recipe: IRecipe) { 
+        let options = { headers: new HttpHeaders({'Content-type': 'application/json'})}
+        return this.http.put<IRecipe>('/api/recipes/'+recipe.id, recipe, options)
+            .pipe(catchError(this.handleError<IRecipe>('updateRecipe')));
+    }
+
+
     deleteRecipe(id: number): Observable<{}> {
         let options = { headers: new HttpHeaders({'Content-type': 'application/json'})}
         const url = `${this.recipesUrl}/${id}`;

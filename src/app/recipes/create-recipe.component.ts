@@ -47,7 +47,14 @@ export class CreateRecipeComponent implements OnInit {
               this.recipeService.getRecipe(+id)?.subscribe((recipe:IRecipe) => {
               this.editedRecipe = recipe;
               this.imageData = this.editedRecipe.image;  
-              this.editmode = true;            
+              this.editmode = true;   
+              this.newRecipe.name = this.editedRecipe.name;
+              this.newRecipe.categoryId = this.editedRecipe.categoryId;
+              this.newRecipe.ingredients = this.editedRecipe.ingredients;
+              this.newRecipe.imageUrl = this.editedRecipe.imageUrl;
+              this.newRecipe.image = this.editedRecipe.image;
+              this.newRecipe.category = this.editedRecipe.category;
+              this.newRecipe.id = this.editedRecipe.id;                    
             });
           }
       })      
@@ -70,10 +77,21 @@ export class CreateRecipeComponent implements OnInit {
   }
 
   saveRecipe(formValues:any) {
-    this.addImageDataToRecipe(formValues);
-    this.recipeService.saveRecipe(formValues).subscribe( () => {
-     this.isDirty = false;
-     this.router.navigate(['/recipes']);
+    if (this.editmode) {
+      this.updateRecipe(formValues);
+    } else {
+      this.addImageDataToRecipe(formValues);
+      this.recipeService.saveRecipe(formValues).subscribe( () => {
+        this.isDirty = false;
+        this.router.navigate(['/recipes']);
+      });
+    }
+  }
+
+  updateRecipe(formValues:any) {
+    this.recipeService.updateRecipe(this.newRecipe).subscribe( () => {
+      this.isDirty = false;
+      this.router.navigate(['/recipes']);
     });
   }
 
