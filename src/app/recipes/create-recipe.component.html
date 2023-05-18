@@ -1,6 +1,6 @@
 <form
-  #newRecipeForm="ngForm"
-  (ngSubmit)="saveRecipe(newRecipeForm.value)"
+  [formGroup]="recipeForm"
+  (ngSubmit)="saveRecipe()"
   autocomplete="on"
 >
   <div class="card">
@@ -8,37 +8,24 @@
       <div class="col-6">
         <div class="form-group">
           <label for="recipeName">Étel neve:</label>
-          <!-- <em *ngIf="!isValid(newRecipeForm.controls['name'])">*</em> -->
           <br />
           <input
-            [(ngModel)]="newRecipe.name"
-            name="name"
-            required
-            maxlength="50"
+            formControlName="recipeName"
             id="name"
             type="text"
             class="form-control"
-            [value]="editedRecipe?.name"
-            #nameVar = "ngModel"
-            [ngClass]="{ 'is-invalid': nameVar.touched && !nameVar.valid }"
+            [ngClass]="{ 'is-invalid': recipeForm.get('recipeName')?.touched && !recipeForm.get('recipeName')?.valid }"
           />
         </div>
 
         <div class="form-group">
           <label for="recipeCategory">Kategória:</label>
-          <!-- <em *ngIf="!isValid(newRecipeForm.controls['categoryId'])">*</em -->
           <br />
-
-
           <select
-            [(ngModel)]="newRecipe.categoryId"
-            class="form-control"
-            name="categoryId"
-            required
-            [value]="editedRecipe?.categoryId"
+            formControlName="recipeCategory"
+            class="form-control"            
             id="categoryId"
-            #categoryVar = "ngModel"
-            [ngClass]="{ 'is-invalid': categoryVar.touched && !categoryVar.valid }"
+            [ngClass]="{ 'is-invalid': recipeForm.get('recipeCategory')?.touched && !recipeForm.get('recipeCategory')?.valid }"
           >
             <option
               *ngFor="let category of getCategories()"
@@ -51,20 +38,15 @@
 
         <div class="form-group">          
           <label for="recipeIngredients">Hozzávalók:</label>
-          <!-- <em *ngIf="!isValid(newRecipeForm.controls['ingredients'])">*</em> -->
           <br />
           <textarea
-            [(ngModel)]="newRecipe.ingredients"
-            name="ingredients"
-            required
+            formControlName="recipeIngredients"            
             id="recipeIngredients"
             type="text"
             class="form-control"
             rows="10"
             cols="35"
-            [value]="editedRecipe?.ingredients"
-            #ingredientsVar = "ngModel"
-            [ngClass]="{ 'is-invalid': ingredientsVar.touched && !ingredientsVar.valid }"
+            [ngClass]="{ 'is-invalid': recipeForm.get('recipeIngredients')?.touched && !recipeForm.get('recipeIngredients')?.valid }"
           ></textarea>
         </div>
       </div>
@@ -75,23 +57,18 @@
           <label for="imageUrl">Kép:</label><br />
           <input
             type="file"
-            accept="image/*"
-            (change)="addFile($event)"
-            [(ngModel)]="newRecipe.imageUrl"
-            name="imageUrl"
-            id="imageUrl"                            
+            accept="image/*"            
+            (change)="addFile($event)"            
+            id="imageUrl"     
+            formControlName="recipeImageUrl"                                   
           />
+          
           <br />
           <img
             [src]="imageData"
-            height="150"
-            required
-            [(ngModel)]="newRecipe.image"            
-            id="recipeImage"
-            #imageVar = "ngModel"
-            name="recipeImage"
-            [ngClass]="{ 'is-invalid': imageVar.valid}"        
-          />
+            height="150"            
+            id="recipeImage"            
+          /> 
         </div>
       </div>        
 
@@ -101,20 +78,15 @@
       <div class="col-md-12">
         <div class="form-group" >
           <label for="recipeInstructions">Elkészítés:</label>
-          <!-- <em *ngIf="!isValid(newRecipeForm.controls['instructions'])">*</em> -->
           <br />
           <textarea
-            [(ngModel)]="newRecipe.instructions"
-            name="instructions"
-            required
+            formControlName="recipeInstructions"            
             id="recipeInstructions"
             type="text"
             class="form-control"
             rows="16"
             cols="80"
-            [value]="editedRecipe?.instructions"
-            #instructionsVar = "ngModel"            
-            [ngClass]="{ 'is-invalid': instructionsVar.touched && !instructionsVar.valid }"
+            [ngClass]="{ 'is-invalid': recipeForm.get('recipeInstructions')?.touched && !recipeForm.get('recipeInstructions')?.valid }"
 
           ></textarea>
         </div>
@@ -125,7 +97,7 @@
       <div class="col-md-2">
         <button
           type="submit"
-          [disabled]="newRecipeForm.invalid"
+          [disabled]="recipeForm.invalid"
           class="btn btn-primary"
         >
           Mentés
@@ -139,5 +111,3 @@
     </div>
   </div>
 </form>
-<!-- <br>Valid: {{newRecipeForm.valid}}
-<br>Image Value: {{newRecipeForm.value | json}} -->

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IRecipe } from './shared/recipes.model';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { RecipeService } from './shared/recipe.service';
-import { AbstractControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'create-recipe',
@@ -18,90 +18,120 @@ import { AbstractControl } from '@angular/forms';
   ]
 })
 export class CreateRecipeComponent implements OnInit {
-  newRecipe : IRecipe;
-  editedRecipe ?: IRecipe;
+
+  recipeForm: FormGroup = null!;
+  newRecipe : IRecipe = null!;
   editmode: boolean = false;
   isDirty : boolean = true;
-  imageData ?: any;
+  imageData ?: any;  
+
   constructor(private router:Router, private route: ActivatedRoute,
-    private recipeService:RecipeService) {
-      this.newRecipe = {
-        name: "",
+    private recipeService:RecipeService, private formBuilder: FormBuilder) {
+  }
+
+  private initForm() {
+    this.recipeForm = this.formBuilder.group({
+      recipeName: ['', [Validators.required, Validators.maxLength(50)]],       
+      recipeCategory: ['', Validators.required],
+      recipeIngredients: ['', Validators.required],
+      recipeInstructions: ['', Validators.required],
+      recipeImageUrl: ['', Validators.required],
+      recipeImage: [null],
+      recipeId: [0]
+    });
+  }
+
+  private initNewRecipe() {
+    this.newRecipe = {
+      name: "",
+      id: 0,
+      categoryId: 0,
+      category: { 
         id: 0,
-        categoryId: 0,
-        category: { 
-          id: 0,
-          name: ""},
-        ingredients: "",
-        instructions: "",
-        imageUrl: "",
-        image: null
-      }
+        name: ""},
+      ingredients: "",
+      instructions: "",
+      imageUrl: "",
+      image: null
+    }    
+  }
+
+  private populateRecipeData(editedRecipe: IRecipe) {
+    this.recipeForm.patchValue({
+      recipeName: editedRecipe?.name,
+      recipeCategoryId: editedRecipe?.categoryId,
+      recipeCategory: editedRecipe?.categoryId,
+      recipeIngredients: editedRecipe?.ingredients,
+      recipeInstructions: editedRecipe?.instructions,
+      recipeImageUrl: editedRecipe?.imageUrl,
+      recipeImage: editedRecipe?.image,
+      recipeId: editedRecipe?.id
+    });
   }
 
   ngOnInit(): void {
+    this.initForm();
+    this.initNewRecipe();
     this.route.params.forEach((params: Params) =>{
           let id = params['id'];
-          if(!isNaN(id)) {
+          if(!isNaN(id) && id!=0) {
               //this fills the form if an existing recipe is modified
               this.recipeService.getRecipe(+id)?.subscribe((recipe:IRecipe) => {
-              this.editedRecipe = recipe;
-              this.imageData = this.editedRecipe.image;  
-              this.editmode = true;   
-              this.newRecipe.name = this.editedRecipe.name;
-              this.newRecipe.categoryId = this.editedRecipe.categoryId;
-              this.newRecipe.ingredients = this.editedRecipe.ingredients;
-              this.newRecipe.instructions = this.editedRecipe.instructions;
-              this.newRecipe.imageUrl = this.editedRecipe.imageUrl;
-              this.newRecipe.image = this.editedRecipe.image;
-              this.newRecipe.category = this.editedRecipe.category;
-              this.newRecipe.id = this.editedRecipe.id;                    
+                this.editmode = true;   
+                this.imageData = recipe.image;  
+                this.newRecipe.name = recipe.name;
+                this.newRecipe.categoryId = recipe.categoryId;
+                this.newRecipe.ingredients = recipe.ingredients;
+                this.newRecipe.instructions = recipe.instructions;
+                this.newRecipe.imageUrl = recipe.imageUrl;
+                this.newRecipe.image = recipe.image;
+                this.newRecipe.category = recipe.category;
+                this.newRecipe.id = recipe.id;                                
+                this.populateRecipeData(recipe);
+                this.recipeForm.get('recipeImageUrl')?.setValidators([]);
+                this.recipeForm.get('recipeImageUrl')?.updateValueAndValidity();
             });
           }
       })      
       
 }  
 
-  isValid(formControl: AbstractControl) : boolean {
-    //let b = this.editedRecipe!= null || formControl==null || !(formControl.invalid && formControl.touched); 
-    //console.log(">>ISVALID: " + formControl?.value+ b);
-    //return this.editmode || formControl==null || !(formControl.invalid && formControl.touched);
-    return formControl!=null && formControl.valid;
-  }
-
-  isValidCategory(formControl: AbstractControl) : boolean {
-    return formControl!=null && formControl.valid;
-  }
-
   getCategories() {
     return this.recipeService.getCategories();
   }
 
-  saveRecipe(formValues:any) {
+  saveRecipe() {
     if (this.editmode) {
-      this.updateRecipe(formValues);
+      this.updateRecipe();
     } else {
-      this.addImageDataToRecipe(formValues);
-      this.recipeService.saveRecipe(formValues).subscribe( () => {
+      this.addDataToRecipe();      
+      this.recipeService.saveRecipe(this.newRecipe).subscribe( () => {
         this.isDirty = false;
         this.router.navigate(['/recipes']);
       });
     }
   }
 
-  updateRecipe(formValues:any) {
+  updateRecipe() {
+    //console.log(this.newRecipe);
+    this.addDataToRecipe();
     this.recipeService.updateRecipe(this.newRecipe).subscribe( () => {
       this.isDirty = false;
       this.router.navigate(['/recipes']);
     });
   }
 
-  private addImageDataToRecipe(formValues:any) {
-    formValues.image = this.imageData;
+  private addDataToRecipe() {
+    this.newRecipe.image = this.imageData;
+    this.newRecipe.name = this.recipeForm.get('recipeName')?.value;
+    this.newRecipe.categoryId = this.recipeForm.get('recipeCategory')?.value;
+    this.newRecipe.ingredients = this.recipeForm.get('recipeIngredients')?.value;
+    this.newRecipe.instructions = this.recipeForm.get('recipeInstructions')?.value;
+    this.newRecipe.imageUrl = this.recipeForm.get('recipeImageUrl')?.value;
   }
 
   cancel() {
-    if (this.isDirty) {
+    if (this.recipeForm.dirty) {
       if (confirm(`Biztosan elhagyod az oldalt mentés nélkül?`)) {
         this.router.navigate(['/recipes']);
       }
