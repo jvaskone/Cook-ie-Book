@@ -14,8 +14,13 @@
   .text-style {
     white-space: pre-wrap
   }
-  .row {
-    padding: 10px;    
+  .row, i {
+    padding: 10px;   
+  }
+
+  .fa:hover {
+    color: #ffc0ad;
+    cursor: pointer;
   }
 
   .container {
