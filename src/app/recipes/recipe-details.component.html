@@ -1,37 +1,25 @@
 <div class="container-fluid">
   <div class="row" >
-    <span *ngIf="!editing"><h2 (click)="editing=true">{{ recipe?.name }}</h2></span>      
-    <input *ngIf="editing"            
-          name="name"
-          [value]="recipe?.name"
-          required
-          id="name"
-          type="text"
-          class="form-control"   
-          (doubleClick)="doSubmit()"        
-        />   
-
+    <h2 >{{ recipe?.name }}</h2>
   </div>
 
   <div class="row">
     <!--https://mdbootstrap.com/docs/angular/layout/grid/ -->
 
     <div class="col-6">          
-                    
-        
-          <img
-            [src]="recipe?.image"
-            [alt]="recipe?.name"
-            class="recipe-image"            
-          />       
-          <p></p>
           <p class="text-style">{{getCategory(recipe)}}</p>
-      
+          <h4>Hozzávalók:</h4>
+          <p class="text-style">{{ recipe?.ingredients }}</p>
+        
     </div>
 
     <div class="col-6">
-        <h4>Hozzávalók:</h4>
-        <p class="text-style">{{ recipe?.ingredients }}</p>
+      <img
+      [src]="recipe?.image"
+      [alt]="recipe?.name"
+      class="recipe-image"            
+    />       
+
     </div>
     
   </div>

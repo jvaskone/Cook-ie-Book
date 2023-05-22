@@ -45,9 +45,4 @@ export class RecipeDetailsComponent implements OnInit {
     return this.recipeService.getCategory(recipe.categoryId)?.name;
   }
 
-  doSubmit() {
-    this.editing = false;
-      console.log("submit");
-  }
-
 }
