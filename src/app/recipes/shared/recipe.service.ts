@@ -9,7 +9,7 @@ export class RecipeService {
     private recipesUrl = '/api/recipes';
 
     constructor(private http: HttpClient) {
-        this.initCategories();
+        //this.initCategories();
     }
     
     getRecipes(searchTerm?: string): Observable<IRecipe[]> {
@@ -48,10 +48,16 @@ export class RecipeService {
       }    
 
     getCategories(): IRecipeCategory[] | undefined {
+        if(this.categories == null) {
+            this.initCategories();
+        }
         return this.categories;
     }
 
     getCategory(id: number) : IRecipeCategory | undefined {
+        if(this.categories == null) {
+            this.initCategories();
+        }
         if (this.categories != null) {
             return this.categories[id-1];
         }
