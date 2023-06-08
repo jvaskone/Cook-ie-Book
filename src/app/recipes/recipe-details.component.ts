@@ -2,10 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { RecipeService } from './shared/recipe.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { IRecipe } from './shared/recipes.model';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   templateUrl: 'recipe-details.component.html',
-  styleUrls: ['recipe-details.component.css'],
+  styleUrls: [
+     'recipe-details.component.css', 'recipe-details.component.printable.css'],
 })
 export class RecipeDetailsComponent implements OnInit {
   recipe?: IRecipe;
@@ -60,4 +63,25 @@ export class RecipeDetailsComponent implements OnInit {
     this.router.navigate(['/recipes']);
   }
 
+
+  public printToPDF(): void {
+    let DATA = document.getElementById('content');
+    document.getElementById('no-print')?.classList.add('hidden');    
+    if (DATA == null) {
+      return;
+    }         
+    DATA.classList.add('print');
+    html2canvas(DATA).then((canvas) => {
+      let fileWidth = 208;
+      let fileHeight = (canvas.height * fileWidth) / canvas.width;
+      const FILEURI = canvas.toDataURL('image/png');
+      let PDF = new jsPDF('p', 'mm', 'a4');
+      let position = 0;
+      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      PDF.save('cook-e-book.pdf');      
+    });
+    DATA.classList.remove('print');
+    document.getElementById('no-print')?.classList.remove('hidden');
+    
+  }
 }

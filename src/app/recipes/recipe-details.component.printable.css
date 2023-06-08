@@ -1,0 +1,24 @@
+@media print {
+  * {
+    background-color: white;
+    color: black;
+  }
+    .no-print {
+        display: none;
+    }
+    .recipe-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+    .text-style {
+      white-space: pre-wrap
+    }
+    .row, i {
+      padding: 10px;   
+    }
+  
+}
+
+
+

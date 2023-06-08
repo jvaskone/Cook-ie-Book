@@ -1,11 +1,12 @@
-<div class="container-fluid">
+<div class="container-fluid" id="content">
   <div class="row" >
     <div class="col-md-8">
       <h2 >{{ recipe?.name }}</h2>    
     </div>
     <div class="col-md-2">
-      <h2>
+      <h2 class="no-print" id="no-print">
         <i class="fa fa-pencil  fa-xs" [routerLink]="['/recipes', recipe?.id, 'edit']" routerLinkActive="router-link-active"></i>
+        <i class="fa fa-print  fa-xs" (click)="printToPDF()"></i>
         <i class="fa fa-trash fa-xs" (click)="deleteRecipe()"></i>
       </h2>
     </div>
@@ -16,7 +17,7 @@
     <!--https://mdbootstrap.com/docs/angular/layout/grid/ -->
 
     <div class="col-6">          
-          <p class="text-style">{{getCategory(recipe)}}</p>
+          <p class="text-style no-print">{{getCategory(recipe)}}</p>
           <h4>Hozzávalók:</h4>
           <p class="text-style">{{ recipe?.ingredients }}</p>
         
