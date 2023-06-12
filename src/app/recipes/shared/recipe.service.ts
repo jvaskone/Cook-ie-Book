@@ -1,7 +1,8 @@
 import { Injectable } from "@angular/core";
 import { IRecipe, IRecipeCategory } from "./recipes.model";
-import { Observable, catchError, of } from "rxjs";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Observable, catchError, of, switchMap } from "rxjs";
+import { tap } from "rxjs/operators";
+import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 
 @Injectable()
 export class RecipeService {
@@ -12,13 +13,21 @@ export class RecipeService {
         //this.initCategories();
     }
     
-    getRecipes(searchTerm?: string): Observable<IRecipe[]> {
+    getRecipes(searchTerm?: string, pageNumber = 1, pageSize = 10): Observable<HttpResponse<IRecipe[]>> {
+        var url;
         if(searchTerm!=null) {
-            return this.http.get<IRecipe[]>('/api/recipes?searchQuery='+searchTerm)
-            .pipe(catchError(this.handleError<IRecipe[]>('getRecipes', [])));
+            url = '/api/recipes?searchQuery='+searchTerm+'&pageNumber='+pageNumber+'&pageSize='+pageSize;
+        } else {
+            url = '/api/recipes?'+'pageNumber='+pageNumber+'&pageSize='+pageSize;
         }
-        return this.http.get<IRecipe[]>('/api/recipes')
-            .pipe(catchError(this.handleError<IRecipe[]>('getRecipes', [])));
+        
+        return this.http.get<IRecipe[]>(url, {observe: 'response'})
+        .pipe(tap(response => {
+                //console.log(response.headers.get('X-Pagination'));
+                //return response;
+            }));            
+        // return this.http.get<IRecipe[]>('/api/recipes')
+        //     .pipe(catchError(this.handleError<IRecipe[]>('getRecipes', [])));
     }
 
     getRecipe(id: number):Observable<IRecipe> {

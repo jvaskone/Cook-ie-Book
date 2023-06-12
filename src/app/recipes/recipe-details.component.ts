@@ -23,21 +23,12 @@ export class RecipeDetailsComponent implements OnInit {
     private router:Router
   ) {}
 
-  /*ngOnInit() {
-    this.route.data.forEach((data) => {
-      this.recipe = this.route.snapshot.data['recipe'];
-    });
-  }*/
-
 
   ngOnInit() {    
     this.route.params.forEach((params: Params) =>{
       const resolvedRecipe = this.route.snapshot.data['recipe'];
       this.errorMessage = resolvedRecipe.error;
       this.recipe = resolvedRecipe.recipe;
-      //  this.recipeService.getRecipe(+params['id'])?.subscribe((recipe:IRecipe) => {
-      //    this.recipe = recipe;
-      //  });
     })
 
   }
@@ -70,7 +61,7 @@ export class RecipeDetailsComponent implements OnInit {
     if (DATA == null) {
       return;
     }         
-    DATA.classList.add('print');
+    DATA.classList.add('print');    
     html2canvas(DATA).then((canvas) => {
       let fileWidth = 208;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
