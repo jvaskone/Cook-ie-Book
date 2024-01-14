@@ -69,7 +69,8 @@ export class RecipeDetailsComponent implements OnInit {
       let PDF = new jsPDF('p', 'mm', 'a4');
       let position = 0;
       PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
-      PDF.save('cook-e-book.pdf');      
+      let title = this.recipe?.name ?? "cook-ie-book";
+      PDF.save(title+'.pdf');      
     });
     DATA.classList.remove('print');
     document.getElementById('no-print')?.classList.remove('hidden');
