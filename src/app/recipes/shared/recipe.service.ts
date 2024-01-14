@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { DEFAULT_CURRENCY_CODE, Injectable } from "@angular/core";
 import { IRecipe, IRecipeCategory } from "./recipes.model";
 import { Observable, catchError, of, switchMap } from "rxjs";
 import { tap } from "rxjs/operators";
@@ -8,12 +8,13 @@ import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
 export class RecipeService {
     categories?: IRecipeCategory[];
     private recipesUrl = '/api/recipes';
+    public static DEFAULT_PAGE_SIZE = 5;
 
     constructor(private http: HttpClient) {
         //this.initCategories();
     }
     
-    getRecipes(searchTerm?: string, pageNumber = 1, pageSize = 10): Observable<HttpResponse<IRecipe[]>> {
+    getRecipes(searchTerm?: string, pageNumber = 1, pageSize = RecipeService.DEFAULT_PAGE_SIZE): Observable<HttpResponse<IRecipe[]>> {
         var url;
         if(searchTerm!=null) {
             url = '/api/recipes?searchQuery='+searchTerm+'&pageNumber='+pageNumber+'&pageSize='+pageSize;

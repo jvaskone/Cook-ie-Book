@@ -1,0 +1,12 @@
+hr {      
+    border-color: #fff3ec;
+    background-color: #fff3ec;
+    margin-bottom: 0px;      
+  }
+  .recipe-pagination ::ng-deep .ngx-pagination .current {
+    background-color: #b08679;
+  }
+  .recipe-pagination ::ng-deep .ngx-pagination a:hover {   
+    background-color: #ffc0ad;   
+    color: #271c19;      
+  }

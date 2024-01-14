@@ -6,27 +6,13 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'recipe-list',
   templateUrl: 'recipe-list.component.html',
-  styles: [`
-    hr {      
-      border-color: #fff3ec;
-      background-color: ##fff3ec;
-      margin-bottom: 0px;      
-    }
-    .recipe-pagination ::ng-deep .ngx-pagination .current {
-      background-color: #b08679;
-    }
-    .recipe-pagination ::ng-deep .ngx-pagination a:hover {   
-      background-color: #ffc0ad;   
-      color: #271c19;      
-    }
-
-  `]
+  styleUrls: ['recipe-list.component.css']
 })
 export class RecipeListComponent {
   recipes: IRecipe[] = [];  
   _searchTerm = '';
   page: number = 1;
-  itemsPerPage = 10;
+  itemsPerPage = RecipeService.DEFAULT_PAGE_SIZE;
   totalItemCount = 1;
 
   constructor(private recipeService : RecipeService, private route:ActivatedRoute) {
@@ -42,14 +28,14 @@ export class RecipeListComponent {
   }
 
   private updateRecipes() {
-    this.recipeService.getRecipes(this._searchTerm, this.page, 10).subscribe(response => {
+    this.recipeService.getRecipes(this._searchTerm, this.page, this.itemsPerPage).subscribe(response => {
       if (response.body !=null) {
         this.recipes = response.body;
       }      
       var s = response.headers.get("X-pagination");
       if (s!= null) {
         this.parsePaginationMetadata(s);        
-      }      
+      }    
     });
   }
 
