@@ -61,14 +61,14 @@ export class RecipeDetailsComponent implements OnInit {
     if (DATA == null) {
       return;
     }         
-    DATA.classList.add('print');    
+    DATA.classList.add('print');
     html2canvas(DATA).then((canvas) => {
-      let fileWidth = 208;
+      let fileWidth = 260;
       let fileHeight = (canvas.height * fileWidth) / canvas.width;
       const FILEURI = canvas.toDataURL('image/png');
-      let PDF = new jsPDF('p', 'mm', 'a4');
-      let position = 0;
-      PDF.addImage(FILEURI, 'PNG', 0, position, fileWidth, fileHeight);
+      let PDF = new jsPDF('p', 'mm', 'a4');      
+      let position = 20;
+      PDF.addImage(FILEURI, 'PNG', 10, position, fileWidth, fileHeight);      
       let title = this.recipe?.name ?? "cook-ie-book";
       PDF.save(title+'.pdf');      
     });
