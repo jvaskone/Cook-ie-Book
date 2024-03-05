@@ -70,7 +70,7 @@ const RECIPES: IRecipe[] = [
     name: "Tyúkhúsleves",
     categoryId: 1,
     category: {id: 1, name: "Leves"},
-    imageUrl: "../../assets/husleves.jpg",
+    imageUrl: "/assets/husleves.jpg",
     image: "",  
     ingredients: "friss, bőrös tyúkhús\n6 szál sárgarépa\n2 szál petrezselyemgyökér\n1 zellergumó\n1 karalábé\n1 nagy fej vöröshagyma\n1 fej fokhagyma\n1 paradicsom\n1 paprika\n1 csokor petrezselyem és zellerzöld\n4 burgonya\n1 kk egészbors\n1 tk darált kömény\n1 késhegynyi kurkuma\n2 ek só",
     instructions: "A húst egy nagyobb fazékba téve felöntjük annyi hideg vízzel, hogy bőven ellepje (kb 6 liter) és felforraljuk.\n\nA keletkezett habot kis szűrővel leszedegetjük és beletesszük a megtisztított, feldarabolt zöldségeket és a fűszereket.\n\nNagyon lassú lángon épp csak gyöngyözzön, legalább 3 órán át főzzük. Közben kóstolgatunk, ha íztelen, sózzuk.\n\nMiután elkészült leszűrjük, a főtt húsokat és a zöldségeket külön tálcára szedegetjük és ízlés szerint grízgaluskával vagy cérnametélttel tálaljuk.\n\nJó étvágyat kívánok!"    
@@ -80,7 +80,7 @@ const RECIPES: IRecipe[] = [
     name: "Csirkepaprikás",
     categoryId: 2,
     category: {id: 2, name: "Főétel"},
-    imageUrl: "../../assets/csirkepaprikas.jpg",
+    imageUrl: "/assets/csirkepaprikas.jpg",
     image: "",    
     ingredients: "2 evőkanál (liba vagy más) zsír\n10 dkg füstölt szalonna felvágva\n1,5 kg csirkehús\n30 dkg vöröshagyma feldarabolva\n5 gerezd fokhagyma feldarabolva\n1 közepes paradicsom feldarabolva\n1 tv paprika feldarabolva\n1,5 liter alaplé vagy víz\n3 púpozott teáskanál édesnemes pirospaprika\nízlés szerint só\n2 evőkanál tejföl vagy felesben tejszín\n1 teáskanál liszt",
     instructions: "A szalonna csíkokat kevés zsiradék hozzáadásával szép ropogósra sütjük. A megsült szalonna darabokat kivesszük az edényből.\n\nA kisülő zsírra rátesszük a sózott, borsozott csirkedarabokat, majd jól jól körbe pirítjuk.\n\nA megpirult csirkedarabokat kivesszük az edényből. Ha kell, teszünk még kevés zsiradékot a fazékba, hozzáadjuk az apróra vágott hagymát és a szeletelt fokhagymát és üvegesre pirítjuk.\n\nHozzárakjuk a paradicsomot, paprikát és a törött paprikát. Ekkor felöntjük 2 dl alaplével, zsírjára pirítjuk és újabb 2 dl folyadékkal önjük fel, elkeverjük és belepakoljuk az előpirított csirkerészeket.\n\nFelöntjük újabb 2 dl alaplével és egészen addig pároljuk, míg finoman lepirul a szaft és a hús az edény alján, majd újabb adag (kb 3-4 dl) alaplével öntjük fel a paprikás alapot és lefedve puhára főzzük a csirkét.\n\nA tejfölt és a lisztet habverővel összekeverjük egy tálban, hozzákanalazunk a csirke szaftjából, elkeverjük és az egészet hozzáöntjük a csirkéhez. Állandó keveréssel jól beforraljuk a mártást.\n\nNokedlivel vagy tésztával tálaljuk."
@@ -90,7 +90,7 @@ const RECIPES: IRecipe[] = [
     name: "Sóskafőzelék",
     categoryId: 3,
     category: {id: 3, name: "Főzelék"},
-    imageUrl: "../../assets/soskafozelek.jpg",
+    imageUrl: "/assets/soskafozelek.jpg",
     image: "",    
     "ingredients": "0,5 kg  sóskalevél\ncukorhelyettesítő\nsó\n1 dl tejföl\n1 dl tej\n2 tk keményítő",
     "instructions": "A sóskát alaposan, folyó vízben megtisztítjuk, levelenként  jól átmossuk.\n\nEgy fazékban megfőzzük a friss sóskaleveleket, majd turmixoljuk. Egy lábasban felmelegítjük, és ízesítjük sóval , édesítőszerrel.\n\nKözben a tejfölt a keményítővel és a tejjel simára keverjük, és behabarjuk vele a sóskát.\n\nFőtt krumplival, tükörtojással tálaljuk."  
@@ -100,7 +100,7 @@ const RECIPES: IRecipe[] = [
     "name": "Fonott kalács",
     "categoryId": 4,
     category: {id: 4, name: "Sütemény" },
-    imageUrl: "../../assets/fonott_kalacs.jpg",
+    imageUrl: "/assets/fonott_kalacs.jpg",
     image: "",
     "ingredients": "dewdw",
     "instructions": "cwedwc"    
@@ -110,7 +110,7 @@ const RECIPES: IRecipe[] = [
     "name": "Bodzafagyi",
     "categoryId": 4,
     category: {id: 4, name: "Sütemény" },
-    imageUrl: "../../assets/bodzafagyi.jpg",
+    imageUrl: "/assets/bodzafagyi.jpg",
     image: "",
     "ingredients": "12 db Bodzavirág\n1 dl Citromlé\n3 szál Menta\n15 dkg Cukor\n2 ek Méz\n6 dl Víz",
     "instructions": "A bodzavirágokat alaposan átnézzük, hogy biztosan nincs-e rajta nem kívánt élősködő, majd egy nagy tálba tesszük.\n\nA bodzához adjuk a karikára vágott citromot és a letépkedett mentaleveleket.\n\nAz egészet nyakon ötjük 6 dl forró vízzel, és egy éjszakán át letakarva állni hagyjuk.\n\nMásnap átszűrjük, és egy edényben közepes lángon melegíteni kezdjük. Hozzáadjuk a cukrot és mézet, majd addig melegítjük, amíg teljesen el nem olvad. Érdemes utána megkóstolni, hogy elég édes-e. Azt vegyünk figyelembe, hogy mivel lefagyasztjuk, így édesebbnek kell lennie, mint egy normál pohár bodzaszörpnek, mert a hideg miatt kevésbé fogjuk élénken érezni az ízeket.\n\nHa elkészült, akkor félretesszük hűlni, és ha már szobahőmérsékletű, akkor a jégkrémformákat megtöltjük a bodzás vízzel, és mélyhűtőbe tesszük."
