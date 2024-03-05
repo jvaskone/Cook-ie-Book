@@ -1,61 +1,22 @@
-import { DEFAULT_CURRENCY_CODE, Injectable } from "@angular/core";
 import { IRecipe, IRecipeCategory } from "./recipes.model";
-import { Observable, catchError, of, switchMap } from "rxjs";
-import { tap } from "rxjs/operators";
-import { HttpClient, HttpHeaders, HttpResponse } from "@angular/common/http";
+import { Observable, of } from "rxjs";
 
-@Injectable()
-export class RecipeService {
+export abstract class RecipeService {
     categories?: IRecipeCategory[];
-    private recipesUrl = '/api/recipes';
     public static DEFAULT_PAGE_SIZE = 5;
 
-    constructor(private http: HttpClient) {
-        //this.initCategories();
-    }
-    
-    getRecipes(searchTerm?: string, pageNumber = 1, pageSize = RecipeService.DEFAULT_PAGE_SIZE): Observable<HttpResponse<IRecipe[]>> {
-        var url;
-        if(searchTerm!=null) {
-            url = '/api/recipes?searchQuery='+searchTerm+'&pageNumber='+pageNumber+'&pageSize='+pageSize;
-        } else {
-            url = '/api/recipes?'+'pageNumber='+pageNumber+'&pageSize='+pageSize;
-        }
-        
-        return this.http.get<IRecipe[]>(url, {observe: 'response'})
-        .pipe(tap(response => {
-                //console.log(response.headers.get('X-Pagination'));
-                //return response;
-            }));            
-        // return this.http.get<IRecipe[]>('/api/recipes')
-        //     .pipe(catchError(this.handleError<IRecipe[]>('getRecipes', [])));
-    }
+    abstract getRecipes(searchTerm?: string, pageNumber?:number,
+        pageSize?: number): Observable<IRecipe[]>;
 
-    getRecipe(id: number):Observable<IRecipe> {
-        return this.http.get<IRecipe>('/api/recipes/' + id)
-        .pipe(catchError(this.handleError<IRecipe>('getRecipe')));
+    abstract getRecipe(id: number): Observable<IRecipe>;
 
-    }
+    abstract saveRecipe(recipe: IRecipe): Observable<IRecipe>;
 
-    saveRecipe(recipe: IRecipe) {        
-        let options = { headers: new HttpHeaders({'Content-type': 'application/json'})}
-        return this.http.post<IRecipe>('/api/recipes/recipe', recipe, options)
-            .pipe(catchError(this.handleError<IRecipe>('saveRecipe')));
-    }
+    abstract updateRecipe(recipe: IRecipe): Observable<IRecipe>;
 
-    updateRecipe(recipe: IRecipe) { 
-        let options = { headers: new HttpHeaders({'Content-type': 'application/json'})}
-        return this.http.put<IRecipe>('/api/recipes/'+recipe.id, recipe, options)
-            .pipe(catchError(this.handleError<IRecipe>('updateRecipe')));
-    }
+    abstract deleteRecipe(id: number): Observable<{}>;
 
-
-    deleteRecipe(id: number): Observable<{}> {
-        let options = { headers: new HttpHeaders({'Content-type': 'application/json'})}
-        const url = `${this.recipesUrl}/${id}`;
-        return this.http.delete<IRecipe>(url, options)
-          .pipe(catchError(this.handleError<IRecipe>('deleteRecipe')));
-      }    
+    abstract initCategories(): void;    
 
     getCategories(): IRecipeCategory[] | undefined {
         if(this.categories == null) {
@@ -74,17 +35,7 @@ export class RecipeService {
         return undefined;
     }
 
-    initCategories() {
-         this.http.get<IRecipeCategory[]>('/api/categories')
-            .pipe(catchError(this.handleError<IRecipeCategory[]>('getRecipeCategories', [])))
-            .subscribe(categories => {
-                this.categories = categories;
-            }); 
-
-    }
-
-
-    private handleError<T> (operation = 'operation', result? : T) {
+    handleError<T> (operation = 'operation', result? : T) {
         return (error: any): Observable<T> => {
             console.error(error);
             return of (result as T);
@@ -93,13 +44,13 @@ export class RecipeService {
     
 }
 
-// const CATEGORIES: string[] = [
-//         "Leves",
-//         "Főétel",
-//         "Főzelék",
-//         "Sütemény",
-//         "Torta",
-//         "Saláta",
-//         "Befőzés"
+// const CATEGORIES: IRecipeCategory[] = [
+//         {id: 1, name: "Leves"},
+//         {id: 2, name: "Főétel"},
+//         {id: 3, name: "Főzelék"},
+//         {id: 4, name: "Sütemény"},
+//         {id: 5, name: "Torta"},
+//         {id: 6, name: "Saláta"},
+//         {id: 7, name: "Befőzés"}
 // ];
 

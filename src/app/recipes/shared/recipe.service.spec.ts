@@ -1,9 +1,7 @@
 import { RecipeService } from "./recipe.service";
 import { IRecipe } from "./recipes.model";
-import { Observable, of } from "rxjs";
 import { TestBed, getTestBed, inject } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { HttpEvent, HttpEventType } from "@angular/common/http";
 
 describe('RecipeService', () => {
     let service: RecipeService;

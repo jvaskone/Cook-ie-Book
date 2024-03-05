@@ -6,7 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'recipe-list',
   templateUrl: 'recipe-list.component.html',
-  styleUrls: ['recipe-list.component.css']
+  styleUrls: ['recipe-list.component.css'],
 })
 export class RecipeListComponent {
   recipes: IRecipe[] = [];  
@@ -15,34 +15,40 @@ export class RecipeListComponent {
   itemsPerPage = RecipeService.DEFAULT_PAGE_SIZE;
   totalItemCount = 1;
 
+  configData: any; 
+  useBackend: boolean = true;
+
   constructor(private recipeService : RecipeService, private route:ActivatedRoute) {
     this.route.queryParamMap.subscribe((params: any) => {
         this.searchTerm = this.route.snapshot.queryParamMap.get('searchQuery') || '';
-   });
-
+        console.log("!!!!" + this.searchTerm);
+      });
   }
 
-  ngOnInit(): void {
+  
+  ngOnInit(): void {      
     //this.searchTerm = this.route.snapshot.queryParamMap.get('searchQuery') || '';
     this.updateRecipes();
   }
 
   private updateRecipes() {
-    this.recipeService.getRecipes(this._searchTerm, this.page, this.itemsPerPage).subscribe(response => {
-      if (response.body !=null) {
-        this.recipes = response.body;
-      }      
-      var s = response.headers.get("X-pagination");
-      if (s!= null) {
-        this.parsePaginationMetadata(s);        
-      }    
-    });
+    this.recipeService.getRecipes(this._searchTerm, this.page, 
+      this.itemsPerPage).subscribe(response => {
+        this.recipes = response;
+    //   if (response.body !=null) {
+    //     this.recipes = response.body;
+    //   }      
+    //   var s = response.headers.get("X-pagination");
+    //   if (s!= null) {
+    //     this.parsePaginationMetadata(s);        
+    //   }    
+     });
   }
 
-  private parsePaginationMetadata(s: string) {    
-    var pagingInfo : string[] = s.split(",");
-    this.totalItemCount = +(pagingInfo[0].slice(18));
-  }
+  // private parsePaginationMetadata(s: string) {    
+  //   var pagingInfo : string[] = s.split(",");
+  //   this.totalItemCount = +(pagingInfo[0].slice(18));
+  // }
 
   pageChanged(s:any) {
     this.page = +s;
@@ -56,9 +62,10 @@ export class RecipeListComponent {
   set searchTerm(value: string) {
     this._searchTerm = value;
     this.recipeService.getRecipes(this.searchTerm).subscribe(response => {
-      if (response.body !=null) {
-        this.recipes = response.body;
-      }
+      this.recipes = response;
+      // if (response.body !=null) {
+      //   this.recipes = response.body;        
+      // }
     });
   }
 
