@@ -20,8 +20,7 @@ export class RecipeListComponent {
 
   constructor(private recipeService : RecipeService, private route:ActivatedRoute) {
     this.route.queryParamMap.subscribe((params: any) => {
-        this.searchTerm = this.route.snapshot.queryParamMap.get('searchQuery') || '';
-        console.log("!!!!" + this.searchTerm);
+        this.searchTerm = this.route.snapshot.queryParamMap.get('searchQuery') || '';        
       });
   }
 

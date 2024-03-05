@@ -23,13 +23,29 @@ export class DemoRecipeService extends RecipeService {
     return of();
   }
   override saveRecipe(recipe: IRecipe): Observable<IRecipe> {
-    throw new Error('Method not implemented.');
+    recipe.id = Math.floor(Math.random() * 1000);
+    this.recipes.push(recipe);
+    return of(recipe);
   }
+
   override updateRecipe(recipe: IRecipe): Observable<IRecipe> {
-    throw new Error('Method not implemented.');
+    for(let index = 0; index < this.recipes.length; index++) {
+      if (this.recipes[index].id == recipe.id) {
+        this.recipes[index] = recipe;
+        return of(recipe);
+      }      
+    }        
+    return of();
   }
+
   override deleteRecipe(id: number): Observable<{}> {
-    throw new Error('Method not implemented.');
+    this.recipes.forEach( (recipe, index) => {
+      if(recipe.id == id) {
+        this.recipes.splice(index, 1);
+        console.log("Delete recipe with index " + index);
+      }
+    });
+    return of(this.recipes);
   }
   override initCategories(): void {
       this.categories = CATEGORIES;
@@ -88,5 +104,15 @@ const RECIPES: IRecipe[] = [
     image: "",
     "ingredients": "dewdw",
     "instructions": "cwedwc"    
+  },
+  {
+    "id": 22,
+    "name": "Bodzafagyi",
+    "categoryId": 4,
+    category: {id: 4, name: "Sütemény" },
+    imageUrl: "../../assets/bodzafagyi.jpg",
+    image: "",
+    "ingredients": "12 db Bodzavirág\n1 dl Citromlé\n3 szál Menta\n15 dkg Cukor\n2 ek Méz\n6 dl Víz",
+    "instructions": "A bodzavirágokat alaposan átnézzük, hogy biztosan nincs-e rajta nem kívánt élősködő, majd egy nagy tálba tesszük.\n\nA bodzához adjuk a karikára vágott citromot és a letépkedett mentaleveleket.\n\nAz egészet nyakon ötjük 6 dl forró vízzel, és egy éjszakán át letakarva állni hagyjuk.\n\nMásnap átszűrjük, és egy edényben közepes lángon melegíteni kezdjük. Hozzáadjuk a cukrot és mézet, majd addig melegítjük, amíg teljesen el nem olvad. Érdemes utána megkóstolni, hogy elég édes-e. Azt vegyünk figyelembe, hogy mivel lefagyasztjuk, így édesebbnek kell lennie, mint egy normál pohár bodzaszörpnek, mert a hideg miatt kevésbé fogjuk élénken érezni az ízeket.\n\nHa elkészült, akkor félretesszük hűlni, és ha már szobahőmérsékletű, akkor a jégkrémformákat megtöltjük a bodzás vízzel, és mélyhűtőbe tesszük."
   }
 ];
