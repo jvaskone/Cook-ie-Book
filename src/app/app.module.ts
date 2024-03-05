@@ -24,9 +24,9 @@ import { DemoRecipeService } from './recipes/shared/demo-recipe.service';
 var providers: Provider[] = [RecipeResolver];
 
 
-var s = "HttpRecipeService";
+//var s = "HttpRecipeService";
 //var s = "LocalRecipeService";
-//var s = "DemoRecipeService";
+var s = "DemoRecipeService";
 switch ( s ) {
 	case "HttpRecipeService":
 

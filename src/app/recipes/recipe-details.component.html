@@ -23,7 +23,7 @@
         
     </div>
 
-    <div class="col-6">
+    <div class="col-6" *ngIf="recipe?.image">
       <img
       [src]="recipe?.image"
       [alt]="recipe?.name"
@@ -31,6 +31,16 @@
     />       
 
     </div>
+
+    <div class="col-6" *ngIf="recipe?.imageUrl">
+      <img
+      [src]="recipe?.imageUrl"
+      [alt]="recipe?.name"
+      class="recipe-image"            
+    />       
+
+    </div>
+
     
   </div>
 

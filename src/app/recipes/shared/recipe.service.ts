@@ -44,13 +44,4 @@ export abstract class RecipeService {
     
 }
 
-// const CATEGORIES: IRecipeCategory[] = [
-//         {id: 1, name: "Leves"},
-//         {id: 2, name: "Főétel"},
-//         {id: 3, name: "Főzelék"},
-//         {id: 4, name: "Sütemény"},
-//         {id: 5, name: "Torta"},
-//         {id: 6, name: "Saláta"},
-//         {id: 7, name: "Befőzés"}
-// ];
 
