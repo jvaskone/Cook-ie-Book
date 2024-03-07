@@ -1,0 +1,10 @@
+[
+    {
+        "id": 23,
+        "name": "Eperkrémes torta",
+        "categoryId": 5,            
+        "imageUrl": "assets/epertorta.jpg",        
+        "ingredients": "B",
+        "instructions": "A"
+    }        
+]
